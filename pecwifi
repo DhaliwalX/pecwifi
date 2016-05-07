@@ -1,0 +1,61 @@
+wifi="PEC_WIFI"
+COUNT=0
+LOOP=true
+heading=`date +%r`
+null=0
+found=false
+retry=""
+
+for arg in $@
+do
+    case $arg in
+        "--no-loop")
+            LOOP=false
+            ;;
+        *)
+            wifi=$arg
+            ;;
+    esac
+done
+
+while $LOOP ;
+do
+    result=`ipconfig | grep --word-regexp -oh -m 1 -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"`
+    if [ -z "$result" ]
+    then
+        echo
+        if [ ! $found ]
+            then
+            echo "[$heading] Searching for $wifi ..."
+            while true ;
+            do
+                wifi_=`netsh wlan show profile | grep $wifi`
+
+                if [ -n wifi_ ]
+                    then
+                    echo "[$heading] Found $wifi ..."
+                    break
+                fi
+                sleep 1
+            done
+        fi
+        echo "[$heading] Connecting to $wifi $retry..."
+        null=`netsh wlan connect name=$wifi ssid=$wifi interface="Wi-Fi"`
+
+        if [ $? -ne 0 ]
+            then
+            echo `[$heading] Retrying...`
+        fi
+
+    else
+        echo -e -n "\r[$heading] Connected on $result..."
+        COUNT=1
+    fi
+
+    if [[ $LOOP -eq 1 ]]
+        then
+        exit
+    fi
+    heading=`date + %r`
+    sleep 1
+done
