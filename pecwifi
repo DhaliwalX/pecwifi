@@ -56,6 +56,6 @@ do
         then
         exit
     fi
-    heading=`date + %r`
+    heading=`date +%r`
     sleep 1
 done
