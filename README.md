@@ -1,0 +1,2 @@
+# pecwifi
+For PEC students
