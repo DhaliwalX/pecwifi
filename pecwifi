@@ -29,7 +29,7 @@ do
             echo "[$heading] Searching for $wifi ..."
             while true ;
             do
-                wifi_=`netsh wlan show profile | grep $wifi`
+                wifi_=`netsh wlan show network | grep $wifi`
 
                 if [ -n wifi_ ]
                     then
