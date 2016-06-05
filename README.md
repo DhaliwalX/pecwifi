@@ -16,11 +16,7 @@ I hope you will like it.
 
 ### How to get bash?
 
-So, now let's talk about how to get `bash` on windows. If you're a CSE student, then you might know about bash (Yes, it is the terminal used in Ubuntu).
-
-1) For non CSE people, head over to this [link](https://sourceforge.net/projects/win-bash/files/shell-complete/latest/shell.w32-ix86.zip/download). Download this file.
-
-2) For CSE people, I recommend you to install [git](https://git-scm.com/download/win). This will install bash and git (You will say thanks to me 😌) for you.
+So, now let's talk about how to get `bash` on windows. If you're a CSE student, then you might know about bash (Yes, it is the terminal used in Ubuntu). You can install `bash` by installing Git for Windows.
 
 Facing any problem, report an issue [here](https://github.com/PrinceDhaliwal/pecwifi/issues/new). If you can't do that, then message me on [facebook](http://www.facebook.com/0x1000).
 
